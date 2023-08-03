@@ -6,36 +6,34 @@ let score = 0;
 
 function setup() {
     createCanvas(500, 500);
-
     noStroke();
-
     rectMode(CENTER);
+    textSize(20); 
 }
 
 function draw() {
     background(222);
 
     // draw goal
-    fill(0, 255 0);
+    fill(0, 255, 0); 
     rect(250, 490, 60, 20);
 
     // draw ball
-    fill(255, 0, 255);
-    rect(30, xPos, yPos);
+    fill(255, 0, 255); 
+    rect(xPos, yPos, 30, 30);
 
     // draw score
     fill(18);
-    textSize(20);
-    text("Score: " + score, 0, 0)
+    text("Score: " + score, 10, 30);
 
     // check if in goal
-    if (xPos + 15 <= 220 && xPos - 15 <= 280 && yPos + 15 >= 480) {
-        score;
+    if (xPos + 15 >= 220 && xPos - 15 <= 280 && yPos + 15 >= 470) {
+        score++; // Increment the score
         // reset position and speed
         xPos = random(15, 485);
         yPos = 0;
         xSpeed = random(-5, 5);
-        ySpeed = random(0, 10);
+        ySpeed = random(1, 5); 
     }
 
     // move forward
@@ -51,11 +49,11 @@ function draw() {
     }
     if (yPos > 500) {
         yPos = 0;
-        score--;
+        score--; // Decrement the score
     }
 }
 
 function mouseClicked() {
     xSpeed = random(-5, 5);
-    ySpeed = random(0, 5);
+    ySpeed = random(1, 5); 
 }
